@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main()
+{
+    srand(time(NULL)); // gera numeros aleatorios
+    int i,v,val[4],j,h;
+    char n,nai[4];
+    char naipe[4][8]={"Espadas","copas","ouros","paus"}; // 4 diferentes tipos de naipe
+    int cartas[13]={1,2,3,4,5,6,7,8,9,10,11,12,13}; // valores diferentes que uma carta pode ter
+
+    for(h=1; h<=2; h++)        //numero de jogadores
+    {
+        printf("Jogador %d:",h);
+
+    for(i=0; i<=4; i++)            //quantidade de cartas para sortear
+    {
+        v=rand()%13; // pega um valor aleatorio de carta gerado pelo srand
+        n= rand()%4; // pega um valor aleatorio de naipe gerado pelo srand
+        for(j=0; j<=i; j++)
+        {
+         if(val[j]==v && nai[j]==n)  //verifica se a mesma carta ja foi sorteada
+            {
+             v=rand()%13;
+             n= rand()%4;
+            }
+        }
+        val[i]=v;
+        nai[i]=n;
+        
+    }
+    for(i=0; i<=4; i++)
+    {
+        printf("\n%d de %s\n", cartas[val[i]], naipe[nai[i]]); //escreve as cartas sorteadas
+
+    }
+
+    }
+
+}
